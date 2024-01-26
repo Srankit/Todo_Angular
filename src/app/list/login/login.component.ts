@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HardcodedAuthenticationService } from 'src/app/service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   
-  userName=''
+  userName='ankit';
   password=''
   errorMessage='Invalid Credentails'
   invalidLogin=false
   
-  constructor(private router:Router){
+  constructor(private router:Router, private hardcodedAuthenticationService:HardcodedAuthenticationService){
 
   }
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   }
   handleLogin(){
     console.log(this.userName);
-    if(this.userName==="ankit" && this.password ==="dummy"){
+    //if(this.userName==="ankit" && this.password ==="dummy")
+    if(this.hardcodedAuthenticationService.authenticate(this.userName,this.password)){
       this.router.navigate(['welcome',this.userName])
       this.invalidLogin= false
     }else{
@@ -31,7 +33,5 @@ export class LoginComponent implements OnInit {
     console.log(this.password)
   }
 }
-function handleLogin() {
-  throw new Error('Function not implemented.');
-}
+
 

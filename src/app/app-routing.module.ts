@@ -8,7 +8,7 @@ import { ListTodosComponent } from './list/list-todos/list-todos.component';
 const routes: Routes = [
   //{ path: '/', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'welcome/:name', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'todo', component: ListTodosComponent },
   { path: '**', component: ErrorComponent }
 ];
